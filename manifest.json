@@ -16,7 +16,7 @@
         },
         "playback_speed_2": {
             "suggested_key": {
-                "default": "Alt+1"
+                "default": "Alt+2"
             },
             "description": "Set to the playback speed '2'"
         }
