@@ -24,7 +24,7 @@
     "content_scripts": [
         {
             "matches": ["https://www.youtube.com/watch*"],
-            "js": ["./js/content.js"]
+            "js": ["js/content.js", "lib/jquery-3.4.1.min.js"]
         }
     ],
     "icons": {
