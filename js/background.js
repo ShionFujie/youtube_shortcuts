@@ -11,9 +11,7 @@ chrome.commands.onCommand.addListener(function(command) {
 
 function sendCommand(command) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, command, function(response) {
-            console.log(`received ${response}`)
-        })
+        chrome.tabs.sendMessage(tabs[0].id, command)
     })
     console.log(`Sent ${command}`)
 } 
