@@ -6,5 +6,6 @@ function onMessage(command, _sender) {
         var settingsMenu = $("#ytp-id-20")
         settingsMenu.find(".ytp-menuitem:nth-child(2)").click()
         settingsMenu.find(".ytp-menuitem:nth-child(8)").click()
+        $("#container").click()
     }   
 }
