@@ -4,7 +4,10 @@
     "description": "Additional shortcuts for YouTube",
     "permissions": [],
     "background": {
-        "scripts": ["js/background.js"],
+        "scripts": [
+            "js/background.js", 
+            "js/common/constants/commands.js"
+        ],
         "persistent": false
     },
     "commands": {
@@ -24,7 +27,11 @@
     "content_scripts": [
         {
             "matches": ["https://www.youtube.com/watch*"],
-            "js": ["js/content.js", "lib/jquery-3.4.1.min.js"]
+            "js": [
+                "js/content.js",
+                "js/common/constants/commands.js",
+                "lib/jquery-3.4.1.min.js"
+            ]
         }
     ],
     "icons": {
