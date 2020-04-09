@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(onMessage)
 
-function onMessage(command, _sender) {
+function onMessage(command) {
     if (command == COMMAND_PLAYBACK_SPEED_2)
         doublePlaybackSpeed()
     else if (command == COMMAND_PLAYBACK_SPEED_NORMAL) 
