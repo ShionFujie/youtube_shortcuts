@@ -15,9 +15,7 @@ chrome.commands.onCommand.addListener(command => {
 function executeOnYouTube(f) {
   queryActiveTab(({ url }) => {
     const activeUrl = new URL(url);
-    if (activeUrl.hostname == "www.youtube.com") {
-      f(activeUrl);
-    }
+    if (activeUrl.hostname == "www.youtube.com") f(activeUrl);
   });
 }
 
