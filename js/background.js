@@ -3,8 +3,9 @@ chrome.commands.onCommand.addListener(command => {
     if (["playback_speed_normal", "playback_speed_2"].includes(command) && pathname == "/watch") {
       if (command == "playback_speed_normal") executeNeutralizePlaybackSpeed();
       else if (command == "playback_speed_2") executeDoublePlaybackSpeed();
-    }
-    if (command == "go home" && pathname != "/") goHome();
+    } 
+    else if (command == "go home" && pathname != "/") goHome();
+    else if (command == "history" && pathname != "/feed/history") openHistory()
   });
 });
 
@@ -45,4 +46,8 @@ function executeScriptWithJQuery(file, callback) {
 
 function goHome() {
   chrome.tabs.executeScript({ code: "document.location.pathname = '/'" });
+}
+
+function openHistory() {
+    chrome.tabs.executeScript({ code: "document.location.pathname = '/feed/history'" });
 }
