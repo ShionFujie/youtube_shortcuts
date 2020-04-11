@@ -21,9 +21,15 @@
       }
     },
     "go home": {
-        "description": "Go to YouTube's home page",
+      "description": "Go to YouTube's home page",
       "suggested_key": {
         "default": "Alt+H"
+      }
+    },
+    "history": {
+      "description": "Open YouTube's History feeds",
+      "suggested_key": {
+        "default": "Alt+Y"
       }
     }
   },
