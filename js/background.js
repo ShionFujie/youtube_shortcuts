@@ -1,16 +1,21 @@
 chrome.commands.onCommand.addListener(command => {
-  queryActiveTab(({ url }) => {
-    const { hostname, pathname } = new URL(url);
-    if (hostname == "www.youtube.com") {
-      if (pathname == "/watch") {
-        if (command == "playback_speed_normal")
-          executeNeutralizePlaybackSpeed();
-        else if (command == "playback_speed_2") executeDoublePlaybackSpeed();
-      }
-      if (command == "go home" && pathname != "/") goHome();
+  executeOnYouTube(({pathname}) => {
+    if (pathname == "/watch") {
+      if (command == "playback_speed_normal") executeNeutralizePlaybackSpeed();
+      else if (command == "playback_speed_2") executeDoublePlaybackSpeed();
     }
+    if (command == "go home" && pathname != "/") goHome();
   });
 });
+
+function executeOnYouTube(f) {
+  queryActiveTab(({ url }) => {
+    const activeUrl = new URL(url);
+    if (activeUrl.hostname == "www.youtube.com") {
+      f(activeUrl);
+    }
+  });
+}
 
 function queryActiveTab(onActiveTab) {
   chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
