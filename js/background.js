@@ -30,7 +30,7 @@ function executeDoublePlaybackSpeed() {
 }
 
 function executeAfterLoadingContentScript(code) {
-  executeScriptWithJQuery("js/setPlaybackSpeed.js", () => {
+  executeScriptWithJQuery("js/content/setPlaybackSpeed.js", () => {
     chrome.tabs.executeScript({ code });
   });
 }
