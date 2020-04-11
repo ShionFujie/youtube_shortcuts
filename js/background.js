@@ -2,9 +2,9 @@ chrome.commands.onCommand.addListener(command => {
   queryActiveTab(({ url }) => {
     const { hostname, pathname } = new URL(url);
     if (hostname == "www.youtube.com" && pathname == "/watch") {
-      if (command == COMMAND_PLAYBACK_SPEED_NORMAL)
+      if (command == 'playback_speed_normal')
         executeNeutralizePlaybackSpeed();
-      else if (command == COMMAND_PLAYBACK_SPEED_2)
+      else if (command == 'playback_speed_2')
         executeDoublePlaybackSpeed();
     }
   });
