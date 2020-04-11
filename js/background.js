@@ -1,11 +1,14 @@
 chrome.commands.onCommand.addListener(command => {
-  executeOnYouTube(({pathname}) => {
-    if (["playback_speed_normal", "playback_speed_2"].includes(command) && pathname == "/watch") {
+  executeOnYouTube(({ pathname }) => {
+    if (
+      ["playback_speed_normal", "playback_speed_2"].includes(command) &&
+      pathname == "/watch"
+    ) {
       if (command == "playback_speed_normal") executeNeutralizePlaybackSpeed();
       else if (command == "playback_speed_2") executeDoublePlaybackSpeed();
-    } 
-    else if (command == "go home" && pathname != "/") navigateToPath("/");
-    else if (command == "history" && pathname != "/feed/history") navigateToPath("/feed/history")
+    } else if (command == "go home" && pathname != "/") navigateToPath("/");
+    else if (command == "history" && pathname != "/feed/history")
+      navigateToPath("/feed/history");
   });
 });
 
@@ -18,18 +21,24 @@ function executeOnYouTube(f) {
   });
 }
 
-function queryActiveTab(onActiveTab) {
-  chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
-    onActiveTab(activeTab);
-  });
-}
-
 function executeNeutralizePlaybackSpeed() {
   executeAfterLoadingScript("neutralizePlaybackSpeed()");
 }
 
 function executeDoublePlaybackSpeed() {
   executeAfterLoadingScript("doublePlaybackSpeed()");
+}
+
+function navigateToPath(pathname) {
+  chrome.tabs.executeScript({
+    code: `document.location.pathname = '${pathname}'`
+  });
+}
+
+function queryActiveTab(onActiveTab) {
+  chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    onActiveTab(activeTab);
+  });
 }
 
 function executeAfterLoadingScript(code) {
@@ -42,8 +51,4 @@ function executeScriptWithJQuery(file, callback) {
   chrome.tabs.executeScript({ file: "lib/jquery-3.4.1.min.js" }, () => {
     chrome.tabs.executeScript({ file }, callback);
   });
-}
-
-function navigateToPath(pathname) {
-    chrome.tabs.executeScript({ code: `document.location.pathname = '${pathname}'` });
 }
