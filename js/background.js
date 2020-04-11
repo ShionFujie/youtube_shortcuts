@@ -22,14 +22,14 @@ function executeOnYouTube(f) {
 }
 
 function executeNeutralizePlaybackSpeed() {
-  executeAfterLoadingScript("neutralizePlaybackSpeed()");
+  executeAfterLoadingContentScript("neutralizePlaybackSpeed()");
 }
 
 function executeDoublePlaybackSpeed() {
-  executeAfterLoadingScript("doublePlaybackSpeed()");
+  executeAfterLoadingContentScript("doublePlaybackSpeed()");
 }
 
-function executeAfterLoadingScript(code) {
+function executeAfterLoadingContentScript(code) {
   executeScriptWithJQuery("js/setPlaybackSpeed.js", () => {
     chrome.tabs.executeScript({ code });
   });
