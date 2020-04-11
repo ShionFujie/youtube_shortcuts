@@ -4,7 +4,7 @@
   "description": "Additional shortcuts for YouTube",
   "permissions": ["activeTab"],
   "background": {
-    "scripts": ["js/background.js", "js/common/constants/commands.js"],
+    "scripts": ["js/background.js"],
     "persistent": false
   },
   "commands": {
