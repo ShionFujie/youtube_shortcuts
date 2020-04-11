@@ -9,16 +9,22 @@
   },
   "commands": {
     "playback_speed_normal": {
+      "description": "Set to the playback speed 'Normal'",
       "suggested_key": {
         "default": "Alt+0"
-      },
-      "description": "Set to the playback speed 'Normal'"
+      }
     },
     "playback_speed_2": {
+      "description": "Set to the playback speed '2'",
       "suggested_key": {
         "default": "Alt+2"
-      },
-      "description": "Set to the playback speed '2'"
+      }
+    },
+    "go home": {
+        "description": "Go to YouTube's home page",
+      "suggested_key": {
+        "default": "Alt+H"
+      }
     }
   },
   "icons": {
