@@ -1,13 +1,37 @@
-chrome.commands.onCommand.addListener(function(command) {
-    if (command == COMMAND_PLAYBACK_SPEED_NORMAL)
-        sendCommand(COMMAND_PLAYBACK_SPEED_NORMAL)
-    else if (command == COMMAND_PLAYBACK_SPEED_2)
-        sendCommand(COMMAND_PLAYBACK_SPEED_2)
-})
+chrome.commands.onCommand.addListener(command => {
+  queryActiveTab(({ url }) => {
+    const { hostname, pathname } = new URL(url);
+    if (hostname == "www.youtube.com" && pathname == "/watch") {
+      if (command == 'playback_speed_normal')
+        executeNeutralizePlaybackSpeed();
+      else if (command == 'playback_speed_2')
+        executeDoublePlaybackSpeed();
+    }
+  });
+});
 
-function sendCommand(command) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, command)
-    })
-    console.log(`Sent ${command}`)
-} 
+function queryActiveTab(onActiveTab) {
+  chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+    onActiveTab(activeTab);
+  });
+}
+
+function executeNeutralizePlaybackSpeed() {
+  executeAfterLoadingScript("neutralizePlaybackSpeed()");
+}
+
+function executeDoublePlaybackSpeed() {
+  executeAfterLoadingScript("doublePlaybackSpeed()");
+}
+
+function executeAfterLoadingScript(code) {
+  executeScriptWithJQuery("js/setPlaybackSpeed.js", () => {
+    chrome.tabs.executeScript({ code });
+  });
+}
+
+function executeScriptWithJQuery(file, callback) {
+  chrome.tabs.executeScript({ file: "lib/jquery-3.4.1.min.js" }, () => {
+    chrome.tabs.executeScript({ file }, callback);
+  });
+}
