@@ -1,6 +1,6 @@
 chrome.commands.onCommand.addListener(command => {
   executeOnYouTube(({pathname}) => {
-    if (pathname == "/watch") {
+    if (["playback_speed_normal", "playback_speed_2"].includes(command) && pathname == "/watch") {
       if (command == "playback_speed_normal") executeNeutralizePlaybackSpeed();
       else if (command == "playback_speed_2") executeDoublePlaybackSpeed();
     }
