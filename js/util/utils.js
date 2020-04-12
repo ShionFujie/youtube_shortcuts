@@ -11,7 +11,5 @@ function executeScriptWithJQuery(file, callback) {
 }
 
 function navigateToPath(pathname) {
-  chrome.tabs.executeScript({
-    code: `document.location.pathname = '${pathname}'`
-  });
+  document.location.pathname = pathname
 }

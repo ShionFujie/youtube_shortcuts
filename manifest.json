@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "Additional shortcuts for YouTube",
   "permissions": ["activeTab"],
-  "background": {
-    "scripts": ["js/background.js", "js/util/utils.js"],
-    "persistent": false
-  },
   "commands": {
     "playback_speed_normal": {
       "description": "Set to the playback speed 'Normal'",
@@ -33,6 +29,15 @@
       }
     }
   },
+  "content_scripts": [{
+    "matches": ["https://www.youtube.com/*"],
+    "js": [
+      "js/content.js",
+      "js/content/setPlaybackSpeed.js",
+      "js/util/utils.js",
+      "lib/jquery-3.4.1.min.js"
+    ]
+  }],
   "icons": {
     "16": "images/get_started16.png",
     "32": "images/get_started32.png",
