@@ -1,3 +1,3 @@
 function navigateToPath(pathname) {
-  document.location.pathname = pathname
+  document.location.pathname = pathname;
 }

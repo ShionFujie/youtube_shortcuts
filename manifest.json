@@ -3,15 +3,17 @@
   "version": "0.0.1",
   "description": "Additional shortcuts for YouTube",
   "permissions": [],
-  "content_scripts": [{
-    "matches": ["https://www.youtube.com/*"],
-    "js": [
-      "js/content.js",
-      "js/content/setPlaybackSpeed.js",
-      "js/content/utils.js",
-      "lib/jquery-3.4.1.min.js"
-    ]
-  }],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": [
+        "js/content.js",
+        "js/content/setPlaybackSpeed.js",
+        "js/content/utils.js",
+        "lib/jquery-3.4.1.min.js"
+      ]
+    }
+  ],
   "icons": {
     "16": "images/get_started16.png",
     "32": "images/get_started32.png",
