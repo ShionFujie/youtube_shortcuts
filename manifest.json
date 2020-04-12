@@ -8,8 +8,9 @@
       "matches": ["https://www.youtube.com/*"],
       "js": [
         "js/content.js",
+        "js/constants/key_codes.js",
         "js/content/setPlaybackSpeed.js",
-        "js/content/utils.js",
+        "js/content/updateLocation.js",
         "lib/jquery-3.4.1.min.js"
       ]
     }
