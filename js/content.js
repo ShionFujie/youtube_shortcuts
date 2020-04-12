@@ -1,6 +1,6 @@
 const url = new URL(location.href);
-const { pathname } = url;
-document.onkeydown = ({ code, search }) => {
+const { pathname, search } = url;
+document.onkeydown = ({ code }) => {
   if (
     [KEY_CODE_PLAYBACK_SPEED_NORMAL, KEY_CODE_PLAYBACK_SPEED_2].includes(
       code
