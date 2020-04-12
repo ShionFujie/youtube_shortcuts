@@ -2,37 +2,18 @@
   "name": "YouTube Shortcuts",
   "version": "0.0.1",
   "description": "Additional shortcuts for YouTube",
-  "permissions": ["activeTab"],
-  "background": {
-    "scripts": ["js/background.js", "js/util/utils.js"],
-    "persistent": false
-  },
-  "commands": {
-    "playback_speed_normal": {
-      "description": "Set to the playback speed 'Normal'",
-      "suggested_key": {
-        "default": "Alt+0"
-      }
-    },
-    "playback_speed_2": {
-      "description": "Set to the playback speed '2'",
-      "suggested_key": {
-        "default": "Alt+2"
-      }
-    },
-    "go home": {
-      "description": "Go to YouTube's home page",
-      "suggested_key": {
-        "default": "Alt+H"
-      }
-    },
-    "history": {
-      "description": "Open YouTube's History feeds",
-      "suggested_key": {
-        "default": "Alt+Y"
-      }
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": [
+        "js/content.js",
+        "js/content/setPlaybackSpeed.js",
+        "js/content/utils.js",
+        "lib/jquery-3.4.1.min.js"
+      ]
     }
-  },
+  ],
   "icons": {
     "16": "images/get_started16.png",
     "32": "images/get_started32.png",
