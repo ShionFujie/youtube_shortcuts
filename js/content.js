@@ -22,7 +22,7 @@ document.onkeydown = ({ code, search }) => {
     updateLocation(url, { pathname: "/feed/history" });
   else if (
     code == KEY_CODE_WATCH_LATER &&
-    !(pathname == "/playlist" && search == "?list=WL")
+    (pathname != "/playlist" || search != "?list=WL")
   )
     updateLocation(url, { pathname: "/playlist", search: "?list=WL" });
   else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
