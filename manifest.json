@@ -8,7 +8,7 @@
     "js": [
       "js/content.js",
       "js/content/setPlaybackSpeed.js",
-      "js/util/utils.js",
+      "js/content/utils.js",
       "lib/jquery-3.4.1.min.js"
     ]
   }],
