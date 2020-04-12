@@ -1,10 +1,3 @@
-const KEY_CODE_PLAYBACK_SPEED_NORMAL = "KeyN";
-const KEY_CODE_PLAYBACK_SPEED_2 = "KeyD";
-const KEY_CODE_GO_HOME = "KeyH";
-const KEY_CODE_HISTORY = "KeyY";
-const KEY_CODE_WATCH_LATER = "KeyW";
-const KEY_CODE_LIBRARY = "KeyP";
-
 const url = new URL(location.href);
 const { pathname } = url;
 document.onkeydown = ({ code, search }) => {
