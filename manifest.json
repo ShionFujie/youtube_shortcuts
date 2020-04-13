@@ -1,6 +1,6 @@
 {
   "name": "YouTube Shortcuts",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Additional shortcuts for YouTube",
   "permissions": [],
   "content_scripts": [

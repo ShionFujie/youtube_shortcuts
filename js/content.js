@@ -1,6 +1,8 @@
 const url = new URL(location.href);
 const { pathname, search } = url;
 document.onkeydown = ({ code }) => {
+  if (inputHasFocus()) return;
+
   if (
     [KEY_CODE_PLAYBACK_SPEED_NORMAL, KEY_CODE_PLAYBACK_SPEED_2].includes(
       code
@@ -21,3 +23,7 @@ document.onkeydown = ({ code }) => {
   else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
     updateLocation(url, { pathname: "/feed/library" });
 };
+
+function inputHasFocus() {
+  return $("input#search").is(":focus");
+}
