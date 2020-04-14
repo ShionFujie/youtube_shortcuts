@@ -11,7 +11,9 @@ document.onkeydown = ({ code }) => {
   ) {
     if (code == KEY_CODE_PLAYBACK_SPEED_NORMAL) neutralizePlaybackSpeed();
     else if (code == KEY_CODE_PLAYBACK_SPEED_2) doublePlaybackSpeed();
-  } else if (code == KEY_CODE_GO_HOME && pathname != "/")
+  } else if (code == KEY_CODE_SAVE_TO_PLAYLISTS && pathname == "/watch")
+    clickSaveButton();
+  else if (code == KEY_CODE_GO_HOME && pathname != "/")
     updateLocation(url, { pathname: "/" });
   else if (code == KEY_CODE_HISTORY && pathname != "/feed/history")
     updateLocation(url, { pathname: "/feed/history" });
@@ -26,4 +28,8 @@ document.onkeydown = ({ code }) => {
 
 function inputHasFocus() {
   return $("input#search").is(":focus");
+}
+
+function clickSaveButton() {
+  $('button[aria-label="Save to playlist"]').click();
 }
