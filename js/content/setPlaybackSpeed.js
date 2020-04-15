@@ -19,7 +19,7 @@ function setPlaybackSpeed(menuItemIdx) {
   $("[aria-owns='ytp-id-20']").click();
   // A popup with menu items shown, then clicks the 'Playback speed' item
   settingsMenu
-    .find(".ytp-menuitem:has(.ytp-menuitem-label:contains('Playback speed'))")
+    .find(`.ytp-menuitem:has(.ytp-menuitem-label:contains('${selectors.label_playback_speed}'))`)
     .click();
   // The popup re-rendered with new menu items, then clicks the playback speed item
   settingsMenu.find(`.ytp-menuitem:nth-child(${menuItemIdx})`).click();
