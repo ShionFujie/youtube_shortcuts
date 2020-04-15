@@ -1,3 +1,8 @@
+const selectors = {
+  label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
+  label_playback_speed: chrome.i18n.getMessage("label_playback_speed")
+};
+
 document.onkeydown = ({ code }) => {
   if (inputHasFocus()) return;
 
@@ -31,5 +36,6 @@ function inputHasFocus() {
 }
 
 function clickSaveButton() {
-  $('button[aria-label="Save to playlist"]').click();
+  console.log(selectors.label_save_to_playlist)
+  $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
 }
