@@ -32,7 +32,11 @@ document.onkeydown = ({ code }) => {
 };
 
 function inputHasFocus() {
-  return $("input#search").is(":focus");
+  const inputs = [
+    $("input#search"), // 'Search' input in app bar
+    $("div#create-playlist-form input") // input for 'Create new playlist'
+  ]
+  return inputs.some(input => input.is(":focus")) ;
 }
 
 function clickSaveButton() {
