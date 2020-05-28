@@ -1,3 +1,5 @@
+injectNotInterested()
+
 const selectors = {
   label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
   label_playback_speed: chrome.i18n.getMessage("label_playback_speed")
@@ -42,4 +44,27 @@ function inputHasFocus() {
 function clickSaveButton() {
   console.log(selectors.label_save_to_playlist)
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
+}
+
+function injectNotInterested() {
+  const buttonNotInterested = $('<div></div>').css({
+    "position": "absolute",
+    "top": "0",
+    "cursor": "pointer",
+    "background-color": "rgba(0, 0, 0, 0.8)",
+    "width": "28px",
+    "height": "28px",
+    "border-radius": "2px",
+    "margin": "4px"
+  }).click(() => {
+      console.log('clicked!');
+    })
+
+  const renderer = $('ytd-rich-item-renderer').eq(2)
+  console.log(`renderer=${renderer}`)
+
+  const thumbnail = renderer.find('a#thumbnail')
+  console.log(`thumbnail=${thumbnail}`)
+
+  thumbnail.append(buttonNotInterested)
 }
