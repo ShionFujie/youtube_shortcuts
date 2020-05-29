@@ -1,4 +1,4 @@
-injectNotInterested()
+injectNotInterested();
 
 const selectors = {
   label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
@@ -37,34 +37,39 @@ function inputHasFocus() {
   const inputs = [
     $("input#search"), // 'Search' input in app bar
     $("div#create-playlist-form input") // input for 'Create new playlist'
-  ]
-  return inputs.some(input => input.is(":focus")) ;
+  ];
+  return inputs.some(input => input.is(":focus"));
 }
 
 function clickSaveButton() {
-  console.log(selectors.label_save_to_playlist)
+  console.log(selectors.label_save_to_playlist);
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
 }
 
 function injectNotInterested() {
-  const buttonNotInterested = $('<div></div>').css({
-    "position": "absolute",
-    "top": "0",
-    "cursor": "pointer",
-    "background-color": "rgba(0, 0, 0, 0.8)",
-    "width": "28px",
-    "height": "28px",
-    "border-radius": "2px",
-    "margin": "4px"
-  }).click(() => {
-      console.log('clicked!');
+  const buttonNotInterested = $("<div></div>")
+    .css({
+      position: "absolute",
+      top: "0",
+      cursor: "pointer",
+      "background-color": "rgba(0, 0, 0, 0.8)",
+      width: "28px",
+      height: "28px",
+      "border-radius": "2px",
+      margin: "4px"
     })
+    .click(() => {
+      console.log("clicked!");
+    }).append(`<svg viewBox="0 0 24 24" style="color: white;">
+      <path d="M0 0h24v24h0z" fill="none"></path>
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z" fill="white"></path>
+    </svg>`);
 
-  const renderer = $('ytd-rich-item-renderer').eq(2)
-  console.log(`renderer=${renderer}`)
+  const renderer = $("ytd-rich-item-renderer").eq(2);
+  console.log(`renderer=${renderer}`);
 
-  const thumbnail = renderer.find('a#thumbnail')
-  console.log(`thumbnail=${thumbnail}`)
+  const thumbnail = renderer.find("a#thumbnail");
+  console.log(`thumbnail=${thumbnail}`);
 
-  thumbnail.append(buttonNotInterested)
+  thumbnail.append(buttonNotInterested);
 }
