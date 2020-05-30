@@ -69,15 +69,23 @@ function injectNotInterested() {
 
   buttonNotInterested.click(() => {
     console.log("clicked!");
-    const iconButton = renderer.find("button#button");
-    console.log(`renderer=${renderer.html()}`);
+    let iconButton = renderer.find("button#button");
     console.log(`iconButton=${iconButton.html()}`);
     iconButton.click();
-    const notInterestedMenuItem = $("ytd-popup-container").find(
-      "ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))"
-    );
-    console.log(`notInterestedMenuItem=${notInterestedMenuItem.html()}`);
-    notInterestedMenuItem.click();
+
+    let notInterestedMenuitem;
+    function getNoInterestedMenuitem() {
+      return $("ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))")
+    }
+
+    const intervalId = setInterval(() => {
+      notInterestedMenuitem = getNoInterestedMenuitem();
+      if (notInterestedMenuitem.length > 0) {
+        clearInterval(intervalId);
+        notInterestedMenuitem.click();
+      }
+    }, 250);
+
     return false;
   });
 
