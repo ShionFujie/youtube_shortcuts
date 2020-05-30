@@ -47,7 +47,7 @@ function clickSaveButton() {
 }
 
 function injectNotInterested() {
-  const buttonNotInterested = $("<div></div>").css({
+  const buttonNotInterested = $("<div id='ys-not-interested'></div>").css({
     position: "absolute",
     top: "0",
     cursor: "pointer",
@@ -75,7 +75,9 @@ function injectNotInterested() {
 
     let notInterestedMenuitem;
     function getNoInterestedMenuitem() {
-      return $("ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))")
+      return $(
+        "ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))"
+      );
     }
 
     const intervalId = setInterval(() => {
@@ -88,6 +90,12 @@ function injectNotInterested() {
 
     return false;
   });
-
-  thumbnail.append(buttonNotInterested);
+  renderer.hover(
+    () => {
+      thumbnail.append(buttonNotInterested);
+    },
+    () => {
+      buttonNotInterested.detach();
+    }
+  );
 }
