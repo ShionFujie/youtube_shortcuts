@@ -73,20 +73,9 @@ function injectNotInterested() {
     console.log(`iconButton=${iconButton.html()}`);
     iconButton.click();
 
-    let notInterestedMenuitem;
-    function getNoInterestedMenuitem() {
-      return $(
-        "ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))"
-      );
-    }
-
-    const intervalId = setInterval(() => {
-      notInterestedMenuitem = getNoInterestedMenuitem();
-      if (notInterestedMenuitem.length > 0) {
-        clearInterval(intervalId);
-        notInterestedMenuitem.click();
-      }
-    }, 250);
+    const notInterestedQuery =
+      "ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))";
+    onElementInflated(notInterestedQuery, notInterestedMenuitem => notInterestedMenuitem.click());
 
     return false;
   });
@@ -98,4 +87,15 @@ function injectNotInterested() {
       buttonNotInterested.detach();
     }
   );
+}
+
+function onElementInflated(query, action) {
+  let el;
+  const intervalId = setInterval(() => {
+    el = $(query);
+    if (el.length > 0) {
+      clearInterval(intervalId);
+      action(el);
+    }
+  }, 250);
 }
