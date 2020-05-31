@@ -73,9 +73,9 @@ function injectNotInterested() {
     console.log(`iconButton=${iconButton.html()}`);
     iconButton.click();
 
-    const notInterestedQuery =
+    const menuitemQuery =
       "ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(Not interested))";
-    onElementInflated(notInterestedQuery, notInterestedMenuitem => notInterestedMenuitem.click());
+    onElementInflated(menuitemQuery, menuitem => menuitem.click());
 
     return false;
   });
