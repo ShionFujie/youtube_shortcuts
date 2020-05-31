@@ -3,6 +3,8 @@ const selectors = {
   label_playback_speed: chrome.i18n.getMessage("label_playback_speed")
 };
 
+setupInjectionToEachRenderer();
+
 document.onkeydown = ({ code }) => {
   if (inputHasFocus()) return;
 
@@ -35,11 +37,11 @@ function inputHasFocus() {
   const inputs = [
     $("input#search"), // 'Search' input in app bar
     $("div#create-playlist-form input") // input for 'Create new playlist'
-  ]
-  return inputs.some(input => input.is(":focus")) ;
+  ];
+  return inputs.some(input => input.is(":focus"));
 }
 
 function clickSaveButton() {
-  console.log(selectors.label_save_to_playlist)
+  console.log(selectors.label_save_to_playlist);
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
 }

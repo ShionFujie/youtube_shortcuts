@@ -1,17 +1,19 @@
 {
   "name": "YouTube Shortcuts",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Additional shortcuts for YouTube",
   "permissions": [],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
       "js": [
+        "lib/jquery-3.4.1.min.js",
+        "js/util/filterNodes.js",
+        "js/content/setupInjectionToEachRenderer.js",
         "js/content.js",
         "js/constants/key_codes.js",
         "js/content/setPlaybackSpeed.js",
-        "js/content/updateLocation.js",
-        "lib/jquery-3.4.1.min.js"
+        "js/content/updateLocation.js"
       ]
     }
   ],
