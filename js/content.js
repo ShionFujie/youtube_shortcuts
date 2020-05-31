@@ -1,9 +1,9 @@
-onNewRendererAdded();
-
 const selectors = {
   label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
   label_playback_speed: chrome.i18n.getMessage("label_playback_speed")
 };
+
+onNewRendererAdded(renderer => injectNotInterestedTo(renderer));
 
 document.onkeydown = ({ code }) => {
   if (inputHasFocus()) return;
@@ -46,20 +46,16 @@ function clickSaveButton() {
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
 }
 
-function onNewRendererAdded() {
+function onNewRendererAdded(listener) {
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       if (mutation.addedNodes) {
-        filterRenderer(mutation.addedNodes).forEach(renderer =>
-          injectNotInterestedTo(renderer)
-        );
+        filterRenderer(mutation.addedNodes).forEach(listener);
       }
     });
   });
   const el = document.getElementById("contents");
-  filterRenderer(el.childNodes).forEach(renderer =>
-    injectNotInterestedTo(renderer)
-  );
+  filterRenderer(el.childNodes).forEach(listener);
   observer.observe(el, { childList: true });
 }
 
