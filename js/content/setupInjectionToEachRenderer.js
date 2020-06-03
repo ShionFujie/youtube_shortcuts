@@ -6,12 +6,12 @@ function onNewRendererAdded(listener) {
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       if (mutation.addedNodes) {
-        filterRenderer(mutation.addedNodes).forEach(listener);
+        filterRenderers(mutation.addedNodes).forEach(listener);
       }
     });
   });
   const el = document.getElementById("contents");
-  filterRenderer(el.childNodes).forEach(listener);
+  filterRenderers(el.childNodes).forEach(listener);
   observer.observe(el, { childList: true });
 }
 
@@ -57,7 +57,7 @@ function injectNotInterestedTo(rendererEl) {
   );
 }
 
-function filterRenderer(nodes) {
+function filterRenderers(nodes) {
   return filterNodes(nodes, node => node.tagName == "YTD-RICH-ITEM-RENDERER");
 }
 
