@@ -1,5 +1,5 @@
 function setupInjectionToEachRenderer() {
-  onNewRendererAdded(renderer => injectNotInterestedTo(renderer));
+  onNewRendererAdded(renderer => injectShortcutsTo(renderer));
 }
 
 function onNewRendererAdded(listener) {
@@ -15,7 +15,7 @@ function onNewRendererAdded(listener) {
   observer.observe(el, { childList: true });
 }
 
-function injectNotInterestedTo(rendererEl) {
+function injectShortcutsTo(rendererEl) {
   const renderer = $(rendererEl);
   const openMenuAsynchronously = () => {
     onElementInflated(
