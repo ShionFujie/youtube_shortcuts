@@ -15,6 +15,12 @@
         "js/content/setPlaybackSpeed.js",
         "js/content/updateLocation.js"
       ]
+    },
+    {
+      "matches": ["https://www.youtube.com/playlist?list=WL*"],
+      "js": [
+        "js/youtube-watch-later-content.js"
+      ]
     }
   ],
   "icons": {
