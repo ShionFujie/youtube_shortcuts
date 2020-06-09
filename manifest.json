@@ -1,6 +1,6 @@
 {
   "name": "YouTube Shortcuts",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Additional shortcuts for YouTube",
   "permissions": [],
   "content_scripts": [
@@ -14,6 +14,12 @@
         "js/constants/key_codes.js",
         "js/content/setPlaybackSpeed.js",
         "js/content/updateLocation.js"
+      ]
+    },
+    {
+      "matches": ["https://www.youtube.com/playlist?list=WL*"],
+      "js": [
+        "js/youtube-watch-later-content.js"
       ]
     }
   ],
