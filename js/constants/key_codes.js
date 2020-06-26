@@ -5,3 +5,4 @@ const KEY_CODE_HISTORY = "KeyY";
 const KEY_CODE_WATCH_LATER = "KeyW";
 const KEY_CODE_LIBRARY = "KeyP";
 const KEY_CODE_SAVE_TO_PLAYLISTS = "KeyS"
+const KEY_CODE_OPEN_TRANSCRIPT = "KeyR"

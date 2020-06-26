@@ -32,10 +32,7 @@ document.onkeydown = ({ code }) => {
     updateLocation(url, { pathname: "/playlist", search: "?list=WL" });
   else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
     updateLocation(url, { pathname: "/feed/library" });
-  else if (pathname == "/watch" && code == "KeyR") {
-    $(`button#button[aria-label="${selectors.label_more_actions}"]`).click();
-    clickMenuitem("Open transcript");
-  }
+  else if (pathname == "/watch" && code == KEY_CODE_OPEN_TRANSCRIPT) openTranscript();
 };
 
 function inputHasFocus() {
@@ -48,4 +45,9 @@ function inputHasFocus() {
 
 function clickSaveButton() {
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
+}
+
+function openTranscript() {
+  $(`button#button[aria-label="${selectors.label_more_actions}"]`).click();
+  clickMenuitem("Open transcript");
 }
