@@ -4,5 +4,8 @@
   },
   "label_playback_speed": {
     "message": "Playback speed"
+  },
+  "label_more_actions": {
+    "message": "More actions"
   }
 }

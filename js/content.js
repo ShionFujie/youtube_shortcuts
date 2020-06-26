@@ -1,6 +1,7 @@
 const selectors = {
   label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
-  label_playback_speed: chrome.i18n.getMessage("label_playback_speed")
+  label_playback_speed: chrome.i18n.getMessage("label_playback_speed"),
+  label_more_actions: chrome.i18n.getMessage("label_more_actions")
 };
 
 setupInjectionToEachRenderer();
@@ -31,6 +32,10 @@ document.onkeydown = ({ code }) => {
     updateLocation(url, { pathname: "/playlist", search: "?list=WL" });
   else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
     updateLocation(url, { pathname: "/feed/library" });
+  else if (pathname == "/watch" && code == "KeyR") {
+    $(`button#button[aria-label="${selectors.label_more_actions}"]`).click();
+    clickMenuitem("Open transcript");
+  }
 };
 
 function inputHasFocus() {
@@ -42,6 +47,5 @@ function inputHasFocus() {
 }
 
 function clickSaveButton() {
-  console.log(selectors.label_save_to_playlist);
   $(`button[aria-label="${selectors.label_save_to_playlist}"]`).click();
 }
