@@ -9,6 +9,7 @@
       "js": [
         "lib/jquery-3.4.1.min.js",
         "js/util/filterNodes.js",
+        "js/content/onElementInflated.js",
         "js/content/setupInjectionToEachRenderer.js",
         "js/content.js",
         "js/constants/key_codes.js",

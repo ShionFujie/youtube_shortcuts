@@ -81,12 +81,7 @@ function MenuitemShortcut(openMenuAsynchronously, iconHTML, top, menuitemText) {
     .append(iconHTML);
   shortcut.click(() => {
     openMenuAsynchronously();
-
-    const menuitemQuery = () =>
-      $(
-        `ytd-popup-container ytd-menu-service-item-renderer:has(yt-formatted-string:contains(${menuitemText}))`
-      );
-    onElementInflated(menuitemQuery, menuitem => menuitem.click());
+    clickMenuitem(menuitemText);
 
     return false;
   });
@@ -95,15 +90,4 @@ function MenuitemShortcut(openMenuAsynchronously, iconHTML, top, menuitemText) {
 
 function filterRenderers(nodes) {
   return filterNodes(nodes, node => node.tagName == "YTD-RICH-ITEM-RENDERER");
-}
-
-function onElementInflated(query, action) {
-  let el;
-  const intervalId = setInterval(() => {
-    el = query();
-    if (el.length > 0) {
-      clearInterval(intervalId);
-      action(el);
-    }
-  }, 250);
 }
