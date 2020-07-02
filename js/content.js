@@ -5,6 +5,7 @@ const selectors = {
   label_more_actions: chrome.i18n.getMessage("label_more_actions")
 };
 
+if (location.pathname === '/')
   setupInjectionToEachRenderer();
 
 document.onkeydown = ({ code }) => {
