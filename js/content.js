@@ -1,10 +1,11 @@
 const selectors = {
   label_save_to_playlist: chrome.i18n.getMessage("label_save_to_playlist"),
+  label_ytp_settings_button: chrome.i18n.getMessage("label_ytp_settings_button"),
   label_playback_speed: chrome.i18n.getMessage("label_playback_speed"),
   label_more_actions: chrome.i18n.getMessage("label_more_actions")
 };
 
-setupInjectionToEachRenderer();
+  setupInjectionToEachRenderer();
 
 document.onkeydown = ({ code }) => {
   if (inputHasFocus()) return;

@@ -14,9 +14,9 @@ function neutralizePlaybackSpeed() {
  * setPlaybackSpeed(8), and, setPlaybackSpeed(4) to neutralize it.
  */
 function setPlaybackSpeed(menuItemIdx) {
-  var settingsMenu = $("#ytp-id-20");
+  var settingsMenu = $(".ytp-settings-menu");
   // Clicks the settings button on the bottom controls of the YouTube video
-  $("[aria-owns='ytp-id-20']").click();
+  $(`[aria-label='${selectors.label_ytp_settings_button}']`).click();
   // A popup with menu items shown, then clicks the 'Playback speed' item
   settingsMenu
     .find(`.ytp-menuitem:has(.ytp-menuitem-label:contains('${selectors.label_playback_speed}'))`)
