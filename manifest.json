@@ -1,6 +1,6 @@
 {
   "name": "YouTube Shortcuts",
-  "version": "0.11.3",
+  "version": "0.12.0",
   "description": "Additional shortcuts for YouTube",
   "permissions": [],
   "content_scripts": [
@@ -13,6 +13,7 @@
         "js/content/setupInjectionToEachRenderer.js",
         "js/content.js",
         "js/constants/key_codes.js",
+        "js/constants/playlists.js",
         "js/content/setPlaybackSpeed.js",
         "js/content/updateLocation.js"
       ]
