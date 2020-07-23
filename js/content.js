@@ -8,7 +8,7 @@ const selectors = {
 if (location.pathname === '/')
   setupInjectionToEachRenderer();
 
-document.onkeydown = ({ code }) => {
+document.onkeydown = ({ code, shiftKey }) => {
   if (inputHasFocus()) return;
 
   const url = new URL(location.href);
@@ -32,7 +32,7 @@ document.onkeydown = ({ code }) => {
     (pathname != "/playlist" || search != `?list=${PLAYLIST_WATCH_LATER}`)
   )
     updateLocation(url, { pathname: "/playlist", search: `?list=${PLAYLIST_WATCH_LATER}` });
-  else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
+  else if (code == KEY_CODE_LIBRARY && !shiftKey && pathname != "/feed/library")
     updateLocation(url, { pathname: "/feed/library" });
   else if (pathname == "/watch" && code == KEY_CODE_OPEN_TRANSCRIPT) openTranscript();
 };
