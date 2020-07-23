@@ -29,9 +29,9 @@ document.onkeydown = ({ code }) => {
     updateLocation(url, { pathname: "/feed/history" });
   else if (
     code == KEY_CODE_WATCH_LATER &&
-    (pathname != "/playlist" || search != "?list=WL")
+    (pathname != "/playlist" || search != `?list=${PLAYLIST_WATCH_LATER}`)
   )
-    updateLocation(url, { pathname: "/playlist", search: "?list=WL" });
+    updateLocation(url, { pathname: "/playlist", search: `?list=${PLAYLIST_WATCH_LATER}` });
   else if (code == KEY_CODE_LIBRARY && pathname != "/feed/library")
     updateLocation(url, { pathname: "/feed/library" });
   else if (pathname == "/watch" && code == KEY_CODE_OPEN_TRANSCRIPT) openTranscript();
