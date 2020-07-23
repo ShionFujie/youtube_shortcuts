@@ -13,6 +13,7 @@
         "js/content/setupInjectionToEachRenderer.js",
         "js/content.js",
         "js/constants/key_codes.js",
+        "js/constants/playlists.js",
         "js/content/setPlaybackSpeed.js",
         "js/content/updateLocation.js"
       ]
