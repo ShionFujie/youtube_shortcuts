@@ -19,11 +19,11 @@ chrome.runtime.onMessageExternal.addListener((request, _, response) => {
     actions: {
       "img url": {
         displayName: "YouTube: Copy URL of Thumbnail",
-        f: requestCopyThumbnailURL
+        f: injectImgURLExtractor
       }
     }
   };
 
-  function requestCopyThumbnailURL() {
-      
+  function injectImgURLExtractor() {
+    chrome.tabs.executeScript({ file: "/js/img-url.js" });
   }

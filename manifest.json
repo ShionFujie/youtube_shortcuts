@@ -2,7 +2,7 @@
   "name": "YouTube Shortcuts",
   "version": "0.12.1",
   "description": "Additional shortcuts for YouTube",
-  "permissions": [],
+  "permissions": ["https://www.youtube.com/*"],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
@@ -26,7 +26,7 @@
     }
   ],
   "background": {
-    "scripts": ["js/background.js"],
+    "scripts": ["js/chrome/tabs/sendMessageToActiveTab.js", "js/background.js"],
     "persistent": false
   },
   "icons": {
