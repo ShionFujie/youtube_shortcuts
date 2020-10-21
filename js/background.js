@@ -18,7 +18,7 @@ chrome.runtime.onMessageExternal.addListener((request, _, response) => {
     name: "YouTube",
     actions: {
       "img url": {
-        displayName: "YouTube: Copy URL of Thumbnail",
+        displayName: "YouTube: Copy URL of Video Thumbnail",
         f: injectImgURLExtractor
       }
     }
